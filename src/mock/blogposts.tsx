@@ -1,6 +1,6 @@
-import { BlogPost } from '../components/blog/types'
-import blogpostsJson from './blogposts.json'
-import { getUsers } from './users'
+import { BlogPost } from 'src/components/blog/types'
+import blogpostsJson from 'src/mock/blogposts.json'
+import { getUsers } from 'src/mock/users'
 
 export const getBlogposts = () => {
   const users = getUsers()
