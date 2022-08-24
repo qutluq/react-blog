@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "name": "Larson Guerrero",
+    "profileUrl": "#",
+    "imageUrl": "/assets/user-avatar-placeholder.jpg"
+  },
+  {
+    "id": 1,
+    "name": "Amie Waller",
+    "profileUrl": "#",
+    "imageUrl": "/assets/user-avatar-placeholder.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Alta Chapman",
+    "profileUrl": "#",
+    "imageUrl": "/assets/user-avatar-placeholder.jpg"
+  }
+]
