@@ -26,7 +26,12 @@ const PopulateBlogposts = () => {
 
       <main>
         <div className="flex min-h-screen flex-col items-center justify-center">
-          <Button type="button" isRounded onClick={() => populatePosts()}>
+          <Button
+            type="button"
+            isRounded
+            onClick={() => populatePosts()}
+            disabled={process.env.NODE_ENV !== 'development'}
+          >
             Populate Blogposts
           </Button>
         </div>

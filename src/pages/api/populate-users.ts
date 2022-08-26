@@ -11,6 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (process.env.NODE_ENV !== 'development') return
   if (req.method !== 'POST') {
     return
   }
