@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button } from 'src/components/button'
 import { PageSize } from 'src/config'
-import { classNames } from 'src/utils'
 
 const paginateData = (data: any[], currentPage: number) => {
   const startIndex = (currentPage - 1) * PageSize
@@ -9,32 +8,15 @@ const paginateData = (data: any[], currentPage: number) => {
   return data.slice(startIndex, endIndex)
 }
 
-export const usePagination = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [allItems, setAllItems] = useState<any[]>([])
+export const usePagination = (allItems: any[]) => {
+  const totalPages = Math.ceil(allItems.length / PageSize)
   const [items, setItems] = useState<any[]>([])
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [totalPages, setTotalPages] = useState<number>(1)
-  const [display, setDisplay] = useState(false)
-
-  const loadItems = async (itemsInitial: any[]) => {
-    setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setAllItems(itemsInitial)
-    setIsLoading(false)
-  }
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    setCurrentPage(1)
-    const nPages = Math.ceil(allItems.length / PageSize)
-    setTotalPages(nPages)
-
-    const displayPagination = nPages > 1 && !isLoading
-    setDisplay(displayPagination)
-
     const paginated = paginateData(allItems, 1)
     setItems(paginated)
-  }, [allItems])
+  }, [])
 
   useEffect(() => {
     const paginated = paginateData(allItems, currentPage)
@@ -42,16 +24,11 @@ export const usePagination = () => {
   }, [currentPage])
 
   return {
-    display,
     items,
     allItems,
-    setAllItems,
-    isLoading,
-    setIsLoading,
     currentPage,
     setCurrentPage,
-    totalPages,
-    loadItems
+    totalPages
   }
 }
 
@@ -59,14 +36,12 @@ type PaginationType = {
   currentPage: number
   setCurrentPage: Function
   totalPages: number
-  display: boolean
 }
 
 export const Pagination = ({
   currentPage,
   setCurrentPage,
-  totalPages,
-  display
+  totalPages
 }: PaginationType) => {
   const handleClickPrevious = (page: number) => {
     if (page < 1) return
@@ -80,10 +55,7 @@ export const Pagination = ({
 
   return (
     <nav
-      className={classNames(
-        !display && 'hidden',
-        'flex flex-row items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6'
-      )}
+      className="flex flex-row items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
       aria-label="Pagination"
     >
       <div className="hidden sm:block">
