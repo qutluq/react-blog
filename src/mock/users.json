@@ -1,20 +1,17 @@
 [
   {
-    "id": 0,
+    "id": "6307bfde615ad8942c10d7e3",
     "name": "Larson Guerrero",
-    "profileUrl": "#",
     "imageUrl": "/assets/user-avatar-placeholder.jpg"
   },
   {
-    "id": 1,
+    "id": "6307bfde615ad8942c10d7e4",
     "name": "Amie Waller",
-    "profileUrl": "#",
     "imageUrl": "/assets/user-avatar-placeholder.jpg"
   },
   {
-    "id": 2,
+    "id": "6307bfde615ad8942c10d7e5",
     "name": "Alta Chapman",
-    "profileUrl": "#",
     "imageUrl": "/assets/user-avatar-placeholder.jpg"
   }
 ]

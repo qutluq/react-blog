@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { Fragment } from 'react'
-import { BlogPost } from 'src/components/blog/types'
+import { Blogpost } from 'src/components/blog/types'
 import { dateToString } from 'src/utils'
 
-export const Item = ({ post }: { post: BlogPost }) => {
+export const Item = ({ post }: { post: Blogpost }) => {
   return (
     <Fragment>
       <div className="flex-shrink-0">
@@ -23,20 +23,23 @@ export const Item = ({ post }: { post: BlogPost }) => {
         </div>
         <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">
-            <Link href={post.author?.profileUrl}>
+            <Link href={`/user/${post.author?.id}`}>
               <img
                 className="border-1 h-10 w-10 rounded-full border border-solid border-gray-300"
                 src={post.author?.imageUrl}
                 alt=""
               />
             </Link>
-            <Link href={post.author?.profileUrl}>
+            <Link href={`/user/${post.author?.id}`}>
               <span className="sr-only">{post.author?.name}</span>
             </Link>
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-gray-900">
-              <Link href={post.author?.profileUrl} className="hover:underline">
+              <Link
+                href={`/user/${post.author?.id}`}
+                className="hover:underline"
+              >
                 {post.author?.name}
               </Link>
             </p>
