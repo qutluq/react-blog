@@ -13,10 +13,13 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const css = classNames(
-    'flex justify-center gap-1 bg-sky-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-sky-600 active:bg-sky-700',
+    'flex justify-center gap-1 px-4 py-2 text-center text-sm font-medium text-white',
     className,
     hasBorder && 'border',
-    isRounded && 'rounded-md'
+    isRounded && 'rounded-md',
+    props.disabled === undefined || !props.disabled
+      ? 'bg-sky-500 hover:bg-sky-600 active:bg-sky-700'
+      : 'bg-sky-300'
   )
 
   return <button {...props} className={css} />
