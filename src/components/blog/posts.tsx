@@ -1,7 +1,7 @@
-import type { BlogPost } from 'src/components/blog'
+import type { Blogpost } from 'src/components/blog'
 import { Item } from 'src/components/blog'
 
-type PropTypes = { posts: BlogPost[] }
+type PropTypes = { posts: Blogpost[] }
 
 export const Posts = ({ posts }: PropTypes) => {
   return (

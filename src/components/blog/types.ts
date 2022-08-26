@@ -1,6 +1,6 @@
 import { User } from 'src/components/user/types'
 
-export type BlogPost = {
+export type Blogpost = {
   id: string
   author: User
   category: string
