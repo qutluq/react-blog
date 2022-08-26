@@ -8,6 +8,6 @@ const dateFormat: Intl.DateTimeFormatOptions = {
 export const dateToString = (date: Date) =>
   date?.toLocaleDateString(undefined, dateFormat)
 
-export function classNames(...classes: Array<string | boolean>) {
+export const classNames = (...classes: Array<string | boolean>) => {
   return classes.filter(Boolean).join(' ')
 }
