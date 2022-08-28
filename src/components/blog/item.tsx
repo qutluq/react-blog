@@ -18,7 +18,9 @@ export const Item = ({ post }: { post: Blogpost }) => {
           </p>
           <a href={`post/${post.id}`} className="mt-2 block">
             <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-            <p className="mt-3 text-base text-gray-500">{post.description}</p>
+            <p className="mt-3 h-24 overflow-hidden text-base text-gray-500">
+              {post.description}
+            </p>
           </a>
         </div>
         <div className="mt-6 flex items-center">
