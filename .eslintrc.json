@@ -19,6 +19,7 @@
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
 
+    "multiline-ternary": "off",
     "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
     "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
 
