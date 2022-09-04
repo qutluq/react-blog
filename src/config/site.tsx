@@ -4,7 +4,7 @@
 export const PageSize = 6
 
 export const navigation = [
-  { name: 'Blog', pathName: '/' },
+  { name: 'Blog', pathName: '/posts' },
   { name: 'Gallery', pathName: '/gallery' },
   { name: 'About', pathName: '/about' }
 ]
