@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import Home from 'src/pages/post'
+import Home from 'src/pages/posts'
 
 export async function getStaticProps() {
   if (
