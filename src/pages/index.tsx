@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import Home from 'src/pages/posts'
 
 export async function getStaticProps() {
@@ -19,6 +19,10 @@ export async function getStaticProps() {
 
   const blogpostsCursor = db.collection('blogposts').find({})
   const blogposts = await blogpostsCursor.toArray()
+
+  const userIDs = blogposts.map((post) => new ObjectId(post.authorId))
+  const usersCollection = db.collection('users').find({ _id: { $in: userIDs } })
+  const users = await usersCollection.toArray()
   await client.close()
 
   return {
@@ -26,6 +30,10 @@ export async function getStaticProps() {
       blogposts: blogposts.map((post) => {
         const { _id, ...otherProps } = post
         return { ...otherProps, id: post._id.toString() }
+      }),
+      users: users.map((user) => {
+        const { _id, ...otherProps } = user
+        return { ...otherProps, id: user._id.toString() }
       })
     }
   }

@@ -3,7 +3,6 @@ import type { Blogpost } from 'src/components/blog'
 import { Posts } from 'src/components/blog'
 import { Pagination, usePagination } from 'src/components/pagination'
 import { User } from 'src/components/user'
-import usersJson from 'src/mock/users.json'
 
 type BlogpostJson = {
   id: string
@@ -17,13 +16,7 @@ type BlogpostJson = {
   title: string
 }
 
-const getUsers = () => {
-  return usersJson as User[]
-}
-
-const convertBlogposts = (blogposts: BlogpostJson[]) => {
-  const users = getUsers()
-
+const convertBlogposts = (blogposts: BlogpostJson[], users: User[]) => {
   return blogposts.map((post) => {
     // copy all fields except authorId
     const { authorId, ...otherFields } = post
@@ -32,9 +25,15 @@ const convertBlogposts = (blogposts: BlogpostJson[]) => {
   }) as Blogpost[]
 }
 
-const Home = ({ blogposts }: { blogposts: BlogpostJson[] }) => {
+const Home = ({
+  blogposts,
+  users
+}: {
+  blogposts: BlogpostJson[]
+  users: User[]
+}) => {
   const { items, currentPage, setCurrentPage, totalPages } = usePagination(
-    convertBlogposts(blogposts)
+    convertBlogposts(blogposts, users)
   )
 
   return (
