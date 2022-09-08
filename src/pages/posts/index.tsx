@@ -1,28 +1,16 @@
 import { MongoClient, ObjectId } from 'mongodb'
 import Head from 'next/head'
-import type { Blogpost } from 'src/components/blog'
+import type { Blogpost, BlogpostJson } from 'src/components/blog'
 import { Posts as PostsLayout } from 'src/components/blog'
 import { Pagination, usePagination } from 'src/components/pagination'
 import { User } from 'src/components/user'
 
-type BlogpostJson = {
-  id: string
-  authorId: string
-  category: string
-  content: string
-  date: string
-  description: string
-  imageUrl: string
-  readingTime: number
-  title: string
-}
-
 const convertBlogposts = (blogposts: BlogpostJson[], users: User[]) => {
   return blogposts.map((post) => {
     // copy all fields except authorId
-    const { authorId, ...otherFields } = post
-    const author = users.find((user) => user.id === authorId)
-    return { ...otherFields, date: new Date(post.date), author }
+    // const { authorId, ...otherFields } = post
+    const author = users.find((user) => user.id === post.authorId)
+    return { ...post, date: new Date(post.date), author }
   }) as Blogpost[]
 }
 

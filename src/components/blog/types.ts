@@ -11,3 +11,15 @@ export type Blogpost = {
   readingTime: number
   title: string
 }
+
+export type BlogpostJson = {
+  id: string
+  authorId: string
+  category: string
+  content: string
+  date: string
+  description: string
+  imageUrl: string
+  readingTime: number
+  title: string
+}
