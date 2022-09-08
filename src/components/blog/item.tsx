@@ -13,15 +13,23 @@ export const Item = ({ post }: { post: Blogpost }) => {
         <div className="flex-1">
           <p className="text-sm font-medium text-indigo-600">
             <Link href="#" className="hover:underline">
-              {post.category}
+              <a>{post.category}</a>
             </Link>
           </p>
-          <a href={`post/${post.id}`} className="mt-2 block">
-            <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-            <p className="mt-3 h-24 overflow-hidden text-base text-gray-500">
-              {post.description}
-            </p>
-          </a>
+          <Link href={`posts/${post.id}`} className="mt-2 block cursor-pointer">
+            <a>
+              <p className="text-xl font-semibold text-gray-900">
+                {post.title}
+              </p>
+            </a>
+          </Link>
+          <Link href={`posts/${post.id}`} className="mt-2 block cursor-pointer">
+            <a>
+              <p className="mt-3 h-24 overflow-hidden text-base text-gray-500">
+                {post.description}
+              </p>
+            </a>
+          </Link>
         </div>
         <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">
