@@ -12,6 +12,8 @@
   },
   "plugins": ["react", "simple-import-sort", "unused-imports"],
   "rules": {
+    "indent": "off",
+    "@typescript-eslint/indent": "off",
     "space-before-function-paren": "off",
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
