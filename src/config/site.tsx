@@ -8,3 +8,6 @@ export const navigation = [
   { name: 'Gallery', pathName: '/gallery' },
   { name: 'About', pathName: '/about' }
 ]
+
+export const SiteName = 'React Blog'
+export const SiteDescription = 'Blog about lifestyle and everything'

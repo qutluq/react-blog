@@ -2,13 +2,11 @@ import { Document } from 'bson'
 import { MongoClient, ObjectId, WithId } from 'mongodb'
 import type { Blogpost, BlogpostJson } from 'src/components/blog'
 import { Post as PostLayout } from 'src/components/blog'
+import { Head } from 'src/components/Head'
 import { User } from 'src/components/user'
+import { SiteName } from 'src/config/site'
 
 const convertBlogpost = (blogpost: BlogpostJson, user: User) => {
-  // copy all fields except authorId
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  // const { authorId, ...otherFields } = blogpost
-
   const post: Blogpost = {
     ...blogpost,
     date: new Date(blogpost.date),
@@ -29,7 +27,17 @@ type PropTypes = {
 
 const Post = ({ post, user }: PropTypes) => {
   const blogpost = convertBlogpost(post, user)
-  return <PostLayout post={blogpost} />
+  return (
+    <>
+      <Head
+        title={`${SiteName} - ${post.title}`}
+        description={post.description}
+        image={post.imageUrl}
+      />
+
+      <PostLayout post={blogpost} />
+    </>
+  )
 }
 
 export const getStaticPaths = async () => {

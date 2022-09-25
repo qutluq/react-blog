@@ -1,9 +1,10 @@
 import { MongoClient, ObjectId } from 'mongodb'
-import Head from 'next/head'
 import type { Blogpost, BlogpostJson } from 'src/components/blog'
 import { Posts as PostsLayout } from 'src/components/blog'
+import { Head } from 'src/components/Head'
 import { Pagination, usePagination } from 'src/components/pagination'
 import { User } from 'src/components/user'
+import { SiteDescription, SiteName } from 'src/config/site'
 
 const convertBlogposts = (blogposts: BlogpostJson[], users: User[]) => {
   return blogposts.map((post) => {
@@ -27,10 +28,11 @@ const Posts = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <Head>
-        <title>Header</title>
-        <meta name="description" content="Blog posts" />
-      </Head>
+      <Head
+        title={`${SiteName} - Blog posts`}
+        description={SiteDescription}
+        image="/assets/android-chrome-512x512.png"
+      />
 
       <main>
         <PostsLayout posts={items} />
