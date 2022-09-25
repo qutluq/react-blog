@@ -1,11 +1,11 @@
 import type { SpecialComponents } from 'react-markdown/lib/ast-to-react'
 import type { NormalComponents } from 'react-markdown/lib/complex-types'
 
-type mdType = Partial<
+type MDType = Partial<
   Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents
 >
 
-export const MDComponentsPost: mdType = {
+export const MDComponentsPost: MDType = {
   h1: ({ ...props }) => (
     <h1 className="py-1 text-lg font-bold text-black" {...props} />
   ),

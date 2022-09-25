@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
@@ -20,7 +19,6 @@ export const Header = () => {
                   <div className="flex items-center">
                     <div className="flex flex-shrink-0 flex-col items-center justify-center">
                       <Image
-                        // className="h-8 w-8"
                         width={32}
                         height={32}
                         src="/assets/logo.svg"
