@@ -2,7 +2,7 @@ import { Document } from 'bson'
 import { MongoClient, ObjectId, WithId } from 'mongodb'
 import type { Blogpost, BlogpostJson } from 'src/components/blog'
 import { Post as PostLayout } from 'src/components/blog'
-import { Head } from 'src/components/Head'
+import { Head } from 'src/components/head'
 import { User } from 'src/components/user'
 import { SiteName } from 'src/config/site'
 
