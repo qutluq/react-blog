@@ -33,6 +33,7 @@ const Post = ({ post, user }: PropTypes) => {
         title={`${SiteName} - ${post.title}`}
         description={post.description}
         image={post.imageUrl}
+        date={post.date}
       />
 
       <PostLayout post={blogpost} />
