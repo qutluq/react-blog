@@ -2,13 +2,17 @@ import 'src/styles/globals.css'
 
 import type { AppProps } from 'next/app'
 import { Fragment } from 'react'
-import { Header } from 'src/components/Header/header'
+import { Footer } from 'src/components/footer'
+import { Header } from 'src/components/header/header'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Fragment>
       <Header />
-      <Component {...pageProps} />
+      <main>
+        <Component {...pageProps} />
+      </main>
+      <Footer />
     </Fragment>
   )
 }

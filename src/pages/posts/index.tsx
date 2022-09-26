@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb'
 import type { Blogpost, BlogpostJson } from 'src/components/blog'
 import { Posts as PostsLayout } from 'src/components/blog'
-import { Head } from 'src/components/Head'
+import { Head } from 'src/components/head'
 import { Pagination, usePagination } from 'src/components/pagination'
 import { User } from 'src/components/user'
 import { SiteDescription, SiteName } from 'src/config/site'
@@ -27,34 +27,19 @@ const Posts = ({
   )
 
   return (
-    <div className="flex flex-col gap-3">
+    <>
       <Head
         title={`${SiteName} - Blog posts`}
         description={SiteDescription}
         image="/assets/android-chrome-512x512.png"
       />
-
-      <main>
-        <PostsLayout posts={items} />
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-        />
-      </main>
-
-      <footer>
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="border-t border-gray-200 py-8 text-center text-sm text-gray-500 sm:text-left">
-            <span className="block sm:inline">
-              &copy; 2022 <a href="https://github.com/qutluq">qutluq</a>
-            </span>
-            {'. '}
-            <span className="block sm:inline">All rights reserved.</span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <PostsLayout posts={items} />
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+      />
+    </>
   )
 }
 
