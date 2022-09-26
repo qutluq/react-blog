@@ -24,7 +24,7 @@ export const Post = ({ post }: { post: Blogpost }) => {
             </span>
           </h1>
         </div>
-        <div className="max-w-96 mx-auto flex flex-row">
+        <div className="max-w-96 mx-auto flex flex-row text-gray-500">
           <div className="px-3">
             <Image
               width={50}
@@ -35,7 +35,7 @@ export const Post = ({ post }: { post: Blogpost }) => {
           </div>
 
           <div className="flex flex-col items-start justify-around">
-            <span>{`${post.author.name}`}</span>
+            <span>{post.author.name}</span>
             <div className="mx-auto h-auto w-auto">
               <span>{`${toDateString(post.date)} ● ${
                 post.readingTime
