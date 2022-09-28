@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment } from 'react'
 import { Blogpost } from 'src/components/blog/types'
@@ -7,7 +8,15 @@ export const Item = ({ post }: { post: Blogpost }) => {
   return (
     <Fragment>
       <div className="flex-shrink-0">
-        <img className="h-48 w-full object-cover" src={post.imageUrl} alt="" />
+        <div className="relative h-48 w-full">
+          <Image
+            priority={true}
+            layout="fill"
+            className="h-full w-full object-cover"
+            src={post.imageUrl}
+            alt="featured image"
+          />
+        </div>
       </div>
       <div className="flex flex-1 flex-col justify-between bg-white p-6">
         <div className="flex-1">
@@ -33,29 +42,35 @@ export const Item = ({ post }: { post: Blogpost }) => {
         </div>
         <div className="mt-6 flex items-center">
           <div className="flex-shrink-0">
-            <Link href={`/user/${post.author?.id}`}>
-              <img
-                className="border-1 h-10 w-10 rounded-full border border-solid border-gray-300"
-                src={post.author?.imageUrl}
-                alt=""
-              />
-            </Link>
-            <Link href={`/user/${post.author?.id}`}>
-              <span className="sr-only">{post.author?.name}</span>
+            <Link href={`/user/${post.author.id}`}>
+              <a>
+                <Image
+                  width={40}
+                  height={40}
+                  className="border-1 rounded-full border border-solid border-gray-300"
+                  src={post.author.imageUrl}
+                  alt="author image"
+                />
+                <span className="sr-only">{post.author.name}</span>
+              </a>
             </Link>
           </div>
           <div className="ml-3">
             <p className="text-sm font-medium text-gray-900">
               <Link
-                href={`/user/${post.author?.id}`}
+                href={`/user/${post.author.id}`}
                 className="hover:underline"
               >
-                {post.author?.name}
+                <a>{post.author.name}</a>
               </Link>
             </p>
             <div className="flex space-x-1 text-sm text-gray-500">
               <time dateTime={post.date.toDateString()}>
-                {dateToString(post.date)}
+                {dateToString({
+                  date: post.date,
+                  month: 'short',
+                  weekday: 'short'
+                })}
               </time>
               <span aria-hidden="true">&middot;</span>
               <span>{post.readingTime} min read</span>

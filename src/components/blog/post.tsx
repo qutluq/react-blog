@@ -1,14 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Blogpost, MDComponentsPost } from 'src/components/blog'
-
-const toDateString = (date: Date) =>
-  date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  })
+import { dateToString } from 'src/utils'
 
 export const Post = ({ post }: { post: Blogpost }) => {
   return (
@@ -26,20 +21,30 @@ export const Post = ({ post }: { post: Blogpost }) => {
         </div>
         <div className="max-w-96 mx-auto flex flex-row text-gray-500">
           <div className="px-3">
-            <Image
-              width={50}
-              height={50}
-              src={post.author.imageUrl}
-              alt={'author image'}
-            />
+            <Link href={`/user/${post.author.id}`}>
+              <a>
+                <Image
+                  width={50}
+                  height={50}
+                  src={post.author.imageUrl}
+                  alt={'author image'}
+                  className="rounded-full"
+                />
+              </a>
+            </Link>
           </div>
 
           <div className="flex flex-col items-start justify-around">
-            <span>{post.author.name}</span>
+            <Link href={`/user/${post.author.id}`}>
+              <a>
+                <span>{post.author.name}</span>
+              </a>
+            </Link>
             <div className="mx-auto h-auto w-auto">
-              <span>{`${toDateString(post.date)} ● ${
-                post.readingTime
-              } min read`}</span>
+              <span>{`${dateToString({
+                date: post.date,
+                month: 'short'
+              })} ● ${post.readingTime} min read`}</span>
             </div>
           </div>
         </div>
