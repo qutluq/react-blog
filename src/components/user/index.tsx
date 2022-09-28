@@ -1,3 +1,5 @@
-import type { User } from './types'
+import { Profile } from 'src/components/user/profile'
+import type { User } from 'src/components/user/types'
 
-export { User }
+export type { User }
+export { Profile }
