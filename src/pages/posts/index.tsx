@@ -5,6 +5,7 @@ import { Head } from 'src/components/head'
 import { Pagination, usePagination } from 'src/components/pagination'
 import { User } from 'src/components/user'
 import { SiteDescription, SiteName } from 'src/config/site'
+import { serializeMongoObject } from 'src/utils'
 
 const convertBlogposts = (blogposts: BlogpostJson[], users: User[]) => {
   return blogposts.map((post) => {
@@ -70,14 +71,8 @@ export async function getStaticProps() {
 
   return {
     props: {
-      blogposts: blogposts.map((post) => {
-        const { _id, ...otherProps } = post
-        return { ...otherProps, id: post._id.toString() }
-      }),
-      users: users.map((user) => {
-        const { _id, ...otherProps } = user
-        return { ...otherProps, id: user._id.toString() }
-      })
+      blogposts: blogposts.map((post) => serializeMongoObject(post)),
+      users: users.map((user) => serializeMongoObject(user))
     }
   }
 }

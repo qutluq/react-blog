@@ -1,10 +1,10 @@
-import { Document } from 'bson'
-import { MongoClient, ObjectId, WithId } from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import type { Blogpost, BlogpostJson } from 'src/components/blog'
 import { Post as PostLayout } from 'src/components/blog'
 import { Head } from 'src/components/head'
 import { User } from 'src/components/user'
 import { SiteName } from 'src/config/site'
+import { serializeMongoObject } from 'src/utils'
 
 const convertBlogpost = (blogpost: BlogpostJson, user: User) => {
   const post: Blogpost = {
@@ -13,11 +13,6 @@ const convertBlogpost = (blogpost: BlogpostJson, user: User) => {
     author: user
   }
   return post
-}
-
-const serializeMongoObjectWihID = (doc: WithId<Document>) => {
-  const { _id, ...otherProps } = doc
-  return { ...otherProps, id: _id.toString() }
 }
 
 type PropTypes = {
@@ -97,8 +92,8 @@ export const getStaticProps = async ({ params }: { params: any }) => {
 
   return {
     props: {
-      post: serializeMongoObjectWihID(blogpost),
-      user: serializeMongoObjectWihID(user)
+      post: serializeMongoObject(blogpost),
+      user: serializeMongoObject(user)
     }
   }
 }

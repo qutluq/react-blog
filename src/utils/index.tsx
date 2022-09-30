@@ -1,3 +1,6 @@
+import { Document } from 'bson'
+import { WithId } from 'mongodb'
+
 type dateTypes = {
   date: Date
   weekday?: 'long' | 'short' | 'narrow'
@@ -25,4 +28,9 @@ export const dateToString = ({
 
 export const classNames = (...classes: Array<string | boolean>) => {
   return classes.filter(Boolean).join(' ')
+}
+
+export const serializeMongoObject = (doc: WithId<Document>) => {
+  const { _id, ...otherProps } = doc
+  return { ...otherProps, id: _id.toString() }
 }
