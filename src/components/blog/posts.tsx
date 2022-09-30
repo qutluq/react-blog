@@ -5,7 +5,7 @@ type PropTypes = { posts: Blogpost[] }
 
 export const Posts = ({ posts }: PropTypes) => {
   return (
-    <div className="bg-gray-50 p-16 px-4">
+    <div className="p-16 px-4">
       <div className="flex max-w-7xl flex-col items-center gap-3">
         <div className="flex flex-col gap-3 text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
