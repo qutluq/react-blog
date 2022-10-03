@@ -20,12 +20,19 @@ a {
   box-sizing: border-box;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
+/* =====================  styles applied to assets/icons.svg ===================== */
+.gmail-solid {
+  --color-0: #4285f4;
+  --color-1: #34a853;
+  --color-2: #fbbc04;
+  --color-3: #ea4335;
+  --color-4: #c5221f;
+}
+
+.facebook-solid {
+  --color-0: #1977f3;
+  --color-1: #fff;
+}
+.github-solid {
+  --color-0: #1b1f23;
+}
